@@ -1,45 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Hola mundo!</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=0, initial-scale=1.0">
+    <title>Test</title>
 </head>
-<body> 
-    <div>
-        <h1>Bienvenido!</h1>
-    </div>
-    <h1>A nuestra pagina</h1>
-    <table>
+
+<body>
+    <table style="border: 1px solid;">
         <thead>
             <tr>
-                <th style="text-align: left;">ID</th>
-                <th style="text-align: center;">NAME</th>
-                <th></th>    
+                <th style="text-align: left;">Col 0</th>
+                <th style="text-align: left;">Col 1</th>
+                <th style="text-align: left;">Col 2</th>
             </tr>
-        </thead>  
+
+        </thead>
         <tbody>
-            <tr>
-                <td style="text-align: left;">1-</td>
-                <td style="text-align: center;">Tito Calderon</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td style="text-align: left;">2-</td>
-                <td style="text-align: center;">Juan Roman Riquelme</td>
-                <td></td>
-            </tr>
+            
         </tbody>
         <tfoot>
             <tr>
                 <td><input></td>
                 <td><input></td>
-                <td> <button>ADD</button></td>
+                <td><input></td>
+                <td><button onclick="add()">Add</button></td>
             </tr>
         </tfoot>
     </table>
-   <script>
-    window.onload = () => {
-        document.getElementsByTagName('input')[0].focus()
-    }
-   </script>
+
+    <script>
+
+        window.onload = () => {
+            clear()
+        }
+
+
+        function add() {
+            var a = document.getElementsByTagName('input')[0].value
+            var b = document.getElementsByTagName('input')[1].value
+            var c = document.getElementsByTagName('input')[2].value
+
+            var tbody = document.getElementsByTagName('tbody')[0]
+            var row = tbody.insertRow()
+            var cell = row.insertCell()
+            cell.innerHTML = a
+            cell = row.insertCell()
+            cell.innerHTML = b
+            cell = row.insertCell()
+            cell.innerHTML = c
+            cell = row.insertCell()
+            cell.innerHTML = ''
+            clear()
+            
+        }
+
+        function clear() {
+            document.getElementsByTagName('input')[0].value = ''
+            document.getElementsByTagName('input')[1].value = ''
+            document.getElementsByTagName('input')[2].value = ''
+            document.getElementsByTagName('input')[0].focus()
+        }
+    </script>
 </body>
+
 </html>
