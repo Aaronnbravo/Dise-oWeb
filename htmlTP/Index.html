@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrabajoPractico</title>
+</head>
+
+<body>
+    <button onclick="callPromise()">CALL</button>
+    <!--pagina 35?-->
+    <script>
+        var url = "https://api.restful-api.dev/objects"
+        var testPromise = new Promise((resolve, reject) => {
+            var request = new XMLHttpRequest()
+            request.open("GET", url)
+            request.responseType = "json"
+            request.onload = () => {
+                if (request.status == 200) {
+                    resolve(request.response)
+                } else {                    
+                    reject("Algo salio mal")
+                }
+            }
+            request.onerror = () => {
+                reject("Error de red")
+                }
+                request.send()   
+        })
+
+        function callPromise() {
+            testPromise.then(response => {
+                console.log(response)
+                alert(response[0].name)
+            })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
+
+    </script>
+
+</body>
+
+</html>
